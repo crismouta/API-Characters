@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://127.0.0.1:5173")
 @RestController
 public class MyCharacterController {
     private final MyCharacterService myCharacterService;
