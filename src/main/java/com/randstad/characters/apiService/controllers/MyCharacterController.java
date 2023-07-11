@@ -34,4 +34,22 @@ public class MyCharacterController {
         this.myCharacterService.deleteCharacter(id);
     }
 
+    @PutMapping("/characters/{id}")
+    public ResponseEntity<MyCharacter> update(@PathVariable Long id, @RequestBody MyCharacter updatedCharacter) {
+        MyCharacter existingCharacter = this.myCharacterService.findById(id);
+
+        if (existingCharacter == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        existingCharacter.setName(updatedCharacter.getName());
+        existingCharacter.setImg(updatedCharacter.getImg());
+        existingCharacter.setDescription(updatedCharacter.getDescription());
+
+
+        MyCharacter updatedCharacterEntity = this.myCharacterService.update(existingCharacter);
+
+        return ResponseEntity.ok(updatedCharacterEntity);
+    }
+
 }

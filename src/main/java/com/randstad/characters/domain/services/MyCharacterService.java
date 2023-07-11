@@ -29,4 +29,8 @@ public class MyCharacterService {
     public void deleteCharacter(Long id) {
         this.characterRepository.deleteById(id);
     }
+
+    public MyCharacter update(MyCharacter character) {
+        return characterRepository.save(character);
+    }
 }
